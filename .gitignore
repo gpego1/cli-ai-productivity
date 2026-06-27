@@ -1,3 +1,5 @@
 .venv
 .idea
+.env
 cronograma.csv
+__pycache__
