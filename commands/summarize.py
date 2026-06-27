@@ -1,7 +1,5 @@
-import os
-from dotenv import load_dotenv
-from openai import OpenAI
-from utils.file_reader import read_file, call_llm
+from utils.file_reader import read_file
+from utils.call_llm import call_llm
 
 def summarize(file_path: str) -> None:
     try:
