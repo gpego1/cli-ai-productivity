@@ -1,7 +1,7 @@
-from commands.ask import ask
+from commands.report import report
 
 def main():
-    response = ask("cv.pdf", "What is the main programming language of Gabriel?")
+    response = report("products.csv")
     print(response)
     
 if __name__ == '__main__':
