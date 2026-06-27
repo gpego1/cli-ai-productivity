@@ -1,9 +1,9 @@
-from commands.summarize import summarize
+from commands.ask import ask
 
 def main():
-    summary = summarize("cronograma.csv")
-    print(summary)
-
+    response = ask("cv.pdf", "What is the main programming language of Gabriel?")
+    print(response)
+    
 if __name__ == '__main__':
     main()
 
