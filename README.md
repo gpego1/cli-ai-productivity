@@ -59,9 +59,9 @@ pip install -r requirements.txt
 Create a `.env` file in the project root:
 
 ```env
-BASE_URL=http://127.0.0.1:1234/v1
-OPENAI_API_KEY=lm-studio
-MODEL=gemma-3
+BASE_URL=your base url
+OPENAI_API_KEY=your api key
+MODEL=your model
 ```
 
 | Variable        | Description                                                        |
