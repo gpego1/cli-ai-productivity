@@ -36,7 +36,7 @@ def generate_text_file(text_content: str) -> str | None:
 
 
 
-def report(file_path: str) -> str| None:
+def run(file_path: str) -> str| None:
     if file_path:
         prompt = f"""
             You are an expert Data Analyst.

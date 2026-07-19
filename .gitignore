@@ -7,3 +7,4 @@ products.csv
 __pycache__/ask.cpython-314.pyc
 __pycache__/summarize.cpython-314.pyc
 cv.pdf
+output/

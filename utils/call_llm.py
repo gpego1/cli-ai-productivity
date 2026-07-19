@@ -4,8 +4,7 @@ from groq import Groq
 
 load_dotenv()
 model = os.getenv("MODEL")
-api_key = os.getenv("OPENAI_API_KEY")
-base_url = os.getenv("BASE_URL")
+api_key = os.getenv("GROQ_API_KEY")
 
 client = Groq(api_key=api_key)
 

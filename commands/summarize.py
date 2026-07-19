@@ -1,7 +1,7 @@
 from utils.file_reader import read_file
 from utils.call_llm import call_llm
 
-def summarize(file_path: str) -> None:
+def run(file_path: str) -> None:
     try:
         content = read_file(file_path)
         prompt = f""" 

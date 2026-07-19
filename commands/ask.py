@@ -2,7 +2,7 @@ from utils.file_reader import read_file
 from utils.call_llm import call_llm
 
 
-def ask(file_path: str, ask: str) -> str:
+def run(file_path: str, question: str) -> str:
     content = read_file(file_path)
     prompt = f"""
         You will receive text extracted from a document 
@@ -17,7 +17,7 @@ def ask(file_path: str, ask: str) -> str:
         is not available.
 
         Text from document: {content}
-        ASK: {ask}
+        ASK: {question}
      """
     return call_llm(prompt)
     
