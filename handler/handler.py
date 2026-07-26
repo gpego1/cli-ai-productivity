@@ -1,6 +1,8 @@
 import json 
 import os
 import boto3
+import magic
+import uuid
 from commands import summarize, ask, report
 
 s3 = boto3.client("s3")
@@ -14,6 +16,19 @@ def _response(status_code, body_dict):
         "body": json.dumps(body_dict)
     }
 
+def upload_file_to_s3(file_path):
+    content_type = magic.from_file(file_path, mime=True)
+    key = f"{uuid.uuid4()}_{os.path.basename(file_path)}"
+
+    with open(file_path, "rb") as data:
+        response = s3.Bucket(UPLOAD_BUCKET).put_object(
+            Key=key, 
+            Body=data,
+            ContentType=content_type
+        )
+    return response
+
+
 def lambda_handler(event, context):
     try:
         path = event.get("rawPath", "")
@@ -26,8 +41,18 @@ def lambda_handler(event, context):
         
         local_path = f"/tmp/{file_key.split("/")[-1]}"
         s3.download_file(UPLOAD_BUCKET, file_key, local_path)
-        
-        if path == "/summarize":
+
+        if path == "/upload":
+            try:
+                filepath = body.get("file_path")
+                if not filepath:
+                    return _response(400, {"error":"No file on the request Body"})
+                result = upload_file_to_s3(filepath)
+                return _response(201, {"created":result})
+            except FileNotFoundError:
+                return _response(404, {"error":"File Not found"})
+
+        elif path == "/summarize":
             result = summarize.run(local_path)
 
         elif path == "/ask":

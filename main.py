@@ -1,7 +1,7 @@
-from handler.handler import lambda_handler
+from handler import lambda_hanlder
 
 def main(event, context):
-    return lambda_handler(event, context)
+    lambda_hanlder(event, context)
     
     
 if __name__ == '__main__':
