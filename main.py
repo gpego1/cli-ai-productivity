@@ -1,4 +1,4 @@
-from handler import lambda_hanlder
+from handler import lambda_handler
 
 def main(event, context):
     lambda_hanlder(event, context)
